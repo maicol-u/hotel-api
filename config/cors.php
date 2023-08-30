@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'],
+    'allowed_origins' => ['https://my-hotel-b5e2c.web.app'],
 
     'allowed_origins_patterns' => [],
 
