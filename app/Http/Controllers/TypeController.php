@@ -8,10 +8,8 @@ use Illuminate\Http\Request;
 class TypeController extends Controller
 {
 
-    private TypeService $typeService;
+    public function __construct(private TypeService $typeService) {
 
-    public function __construct(TypeService $typeService) {
-        $this->$typeService = $typeService;
     }
 
     /**
