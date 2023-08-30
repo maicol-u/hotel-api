@@ -22,7 +22,7 @@ class TypeController extends Controller
         $types = $this->typeService->getAllTypes();
         return Response()->json([
             "message" => "List of rooms types",
-            "data" => $types
+            "data" => $types,
         ]);
     }
 
