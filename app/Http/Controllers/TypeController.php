@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Services\TypeService;
-use Illuminate\Http\Request;
 
 class TypeController extends Controller
 {
