@@ -22,7 +22,7 @@ class HotelService
     
     public function findById(int $id): Hotel
     {
-        return Hotel::with('rooms')->findOrFail($id);
+        return Hotel::findOrFail($id);
     }
 
     public function update(Request $request, int $id): Hotel
