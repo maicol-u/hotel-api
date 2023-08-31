@@ -12,14 +12,19 @@ class RoomService
 
     public function save(Request $request): Room
     {
-        $room = Room::create($request->all());
-        return $room;
+        return Room::create($request->all());
+
     }
 
+    /**
+     * Busca las habitaciones de un hotel con sus tipos y acomodaciones
+     * @param  int $hotelId
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
     public function findRoomsHotel(int $hotelId): Collection
     {
         $hotel = Hotel::find($hotelId);
-        return $hotel->rooms()->get();
+        return $hotel->rooms()->with(["type","accommodation"])->get();
     }
 
 }
