@@ -10,10 +10,19 @@ use Illuminate\Http\Request;
 class RoomService
 {
 
+    /**
+     * Crea un registro de tipo habitacion, si el tipo y acomodacion de la 
+     * habitacion ya existe, retorna un excepcion
+     * @param  int $hotelId
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
     public function save(Request $request): Room
     {
-        return Room::create($request->all());
-
+        try{
+            return Room::create($request->all());
+        }catch(\Exception $e){
+            throw $e; 
+        }
     }
 
     /**

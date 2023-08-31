@@ -12,22 +12,20 @@ class RoomController extends Controller
 {
 
 
-    public function __construct(private RoomService $roomService) {
-
+    public function __construct(private RoomService $roomService)
+    {
     }
 
-      /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function roomsHotel(int $hotelId)
     {
+
         $data = $this->roomService->findRoomsHotel($hotelId);
-        return Response()->json([
-            "message" => "List of rooms and their types for hotel",
-            "data" => $data
-        ]);
+        return Response()->json(["message" => "List of rooms and their types for hotel", "data" => $data]);
     }
 
 
@@ -39,11 +37,14 @@ class RoomController extends Controller
      */
     public function store(SaveRoomRequest $request)
     {
-        $data = $this->roomService->save($request);
-        return Response()->json([
-            "message" => "Room was created",
-            "data" => $data,
-        ], Response::HTTP_CREATED);
+        try {
+            $data = $this->roomService->save($request);
+            return Response()->json([
+                "message" => "Room was created", "data" => $data,
+            ], Response::HTTP_CREATED);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Failed to create room', 'message' => $e->getMessage()], 500);
+        }
     }
 
 
