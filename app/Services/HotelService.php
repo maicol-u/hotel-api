@@ -19,9 +19,21 @@ class HotelService
         return Hotel::all();
     }
 
+    
     public function findById(int $id): Hotel
     {
-        return Hotel::with(['rooms'])->findOrFail($id);
+        return Hotel::with('rooms')->findOrFail($id);
+    }
+
+    /**
+     * busca el hotel, sus habitaciones y los tipos y acomodaciones de las habitaciones
+     * @param  int $hotel
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function findWithTypeAndAccommodation(int $id){
+        return Hotel::with(['rooms' => function($query){
+            $query->with(["type","accommodation"]);
+        }])->findOrFail($id);
     }
 
     public function update(Request $request, int $id): Hotel

@@ -60,6 +60,19 @@ class HotelController extends Controller
         ]);
     }
 
+     /**
+     * busca el hotel, sus habitaciones y los tipos y acomodaciones de las habitaciones
+     * @param  int $hotel
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function showWhithRoomsTypes(int $id) {
+        $hotel = $this->hotelService->findWithTypeAndAccommodation($id);
+        return Response()->json([
+            "message" => "Hotel with its rooms, room types and room accommodation",
+            "data" => $hotel
+        ]);
+    }
+
     /**
      * Update the specified resource in storage.
      *
