@@ -27,4 +27,10 @@ class RoomService
         return $hotel->rooms()->with(["type","accommodation"])->get();
     }
 
+    public function delete(int $id): void
+    {
+        $room = Room::findOrFail($id);
+        $room->delete();
+    }
+
 }

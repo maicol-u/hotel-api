@@ -46,39 +46,6 @@ class RoomController extends Controller
         ], Response::HTTP_CREATED);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Room  $room
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Room $room)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Room  $room
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Room $room)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Room  $room
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Room $room)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.
@@ -86,8 +53,11 @@ class RoomController extends Controller
      * @param  \App\Models\Room  $room
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Room $room)
+    public function destroy(int $id)
     {
-        //
+        $this->roomService->delete($id);
+        return Response()->json([
+            "message" => "Room was deleted",
+        ]);
     }
 }
