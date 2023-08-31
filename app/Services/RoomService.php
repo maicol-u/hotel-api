@@ -2,10 +2,10 @@
 
 namespace App\Services;
 
-use App\Models\Hotel;
 use App\Models\Room;
+use App\Validations\NumRoomsValidation;
 use Illuminate\Http\Request;
-use NumRoomsValidation;
+
 
 class RoomService
 {

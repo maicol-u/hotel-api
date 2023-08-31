@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Validations;
+
 class NumRoomsValidation
 {
 
