@@ -11,10 +11,9 @@ use Illuminate\Http\Response;
 class RoomController extends Controller
 {
 
-    private RoomService $roomService;
 
-    public function __construct(RoomService $roomService) {
-        $this->roomService = $roomService;
+    public function __construct(private RoomService $roomService) {
+
     }
 
       /**
@@ -26,7 +25,7 @@ class RoomController extends Controller
     {
         $data = $this->roomService->findRoomsHotel($hotelId);
         return Response()->json([
-            "message" => "List of hotels",
+            "message" => "List of rooms and their types for hotel",
             "data" => $data
         ]);
     }

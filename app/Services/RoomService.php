@@ -23,7 +23,7 @@ class RoomService
      */
     public function findRoomsHotel(int $hotelId): Collection
     {
-        $hotel = Hotel::find($hotelId);
+        $hotel = Hotel::findOrFail($hotelId);
         return $hotel->rooms()->with(["type","accommodation"])->get();
     }
 
