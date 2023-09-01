@@ -24,7 +24,7 @@ class UpdateHotelRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|unique:hotels|max:100',
+            'name' => 'required|string|max:100',
             'city' => 'required|string|max:100',
             'address' => 'required|string|max:150',
             'phone' => 'max:20|string',

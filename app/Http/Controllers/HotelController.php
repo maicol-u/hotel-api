@@ -69,11 +69,16 @@ class HotelController extends Controller
      */
     public function update(UpdateHotelRequest $request, int $id)
     {
-        $data = $this->hotelService->update($request, $id);
-        return Response()->json([
-            "message" => "Hotel updated",
-            "data" => $data,
-        ]);
+        try{
+            $data = $this->hotelService->update($request, $id);
+            return Response()->json([
+                "message" => "Hotel updated",
+                "data" => $data,
+            ]);
+        }catch(\Exception $e) {
+            return throw $e;
+        }
+       
     }
 
     /**

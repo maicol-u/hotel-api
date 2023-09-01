@@ -25,7 +25,10 @@ class RoomService
         try{
             $this->validateRooms($request->hotel_id, $request->quantity);
             return Room::create($request->all());
-        }catch(\Exception $e){
+        }catch (\Illuminate\Database\QueryException $e) {
+            if( strpos($e->getMessage(), "SQLSTATE[23505]") === 0)  throw new \Exception('El tipo de habitacion ya existe');
+            else throw $e; 
+        }catch(\Exception $e) {
             throw $e; 
         }
     }
